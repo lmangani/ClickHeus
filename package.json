@@ -1,0 +1,29 @@
+{
+  "name": "clickhouse-metrics-prometheus",
+  "version": "1.0.1",
+  "description": "Prometheus Metrics from Clickhouse",
+  "main": "index.js",
+  "config": {
+    "unsafe-perm": true
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hep",
+    "hepic",
+    "packet",
+    "metrics",
+    "prometheus",
+    "network"
+  ],
+  "author": "lorenzo.mangani@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@apla/clickhouse": "^1.6.0",
+    "fastify": "^1.13.1",
+    "prom-client": "^11.2.0",
+    "shared-structs": "^1.3.3"
+  }
+}
