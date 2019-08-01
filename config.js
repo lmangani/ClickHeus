@@ -9,10 +9,12 @@ var config = {
 		"host": "127.0.0.1",
 		"port": 8123,
 		"user": "default",
+		"password": "1dz0HEAC",
 		"database": "hepic_data"
 	},
-	"refresh": 10000,
-	"query": query
+	"refresh": 60000,
+	"query": query,
+	"debug": false
 };
 
 
