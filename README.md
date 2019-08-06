@@ -40,6 +40,8 @@ Using the `prom_metrics` array, define and name new `bucket` and its definitions
 
 ###### 2: Define a Query
 Using the `queries` array, define a new `clickhouse` query to execute and associate it with metrics bucket `g`
+
+Place your value last in your query, and mark its position using the `counter_position` parameter.
 ```
 "queries":[
 		{
@@ -53,7 +55,7 @@ Using the `queries` array, define a new `clickhouse` query to execute and associ
 ```
 
 ###### 3: Output Metrics
-Connect to the configured `/metrics` endpoint defined in your configuration and await data
+Connect to the configured `/metrics` HTTP endpoint defined in your configuration and await data
 ```
 # HELP hepic_click_trans_count hepic transaction Count
 # TYPE hepic_click_trans_count gauge
