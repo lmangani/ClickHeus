@@ -28,8 +28,60 @@ var config = {
 			"metrics": ["s"]
 		}
 	],
+	"prom_metrics": [
+		{ "name": "g", 
+		  "type": "gauge",
+		  "settings": {
+		        name: 'hepic_click_trans_count',
+		        help: 'hepic transaction Count',
+		        maxAgeSeconds: 60,
+		        labelNames: [   
+				"status",
+	                        "xgroup",
+	                        "ipgroup_in",
+	                        "ipgroup_out",
+	                        "usergroup",
+	                        "server_type_in",
+	                        "server_type_out"
+		        ]
+		  }
+		},
+		{ "name": "s", 
+		  "type": "gauge",
+		  "settings": {
+		        name: 'hepic_click_seconds_count',
+		        help: 'hepic call Seconds Count',
+		        maxAgeSeconds: 60,
+		        labelNames: [   
+				"status",
+	                        "xgroup",
+	                        "ipgroup_in",
+	                        "ipgroup_out",
+	                        "usergroup",
+	                        "server_type_in",
+	                        "server_type_out"
+		        ]
+		  }
+		},
+		{ "name": "h", 
+		  "type": "histogram",
+		  "settings": {
+		        name: 'hepic_click_trans_concurrent',
+		        help: 'hepic transactions',
+		        maxAgeSeconds: 60,
+		        labelNames: [   
+				"status",
+	                        "xgroup",
+	                        "ipgroup_in",
+	                        "ipgroup_out",
+	                        "usergroup",
+	                        "server_type_in",
+	                        "server_type_out"
+		        ]
+		  }
+		},
+	],
 	"refresh": 60000,
-	"debug": true
 };
 
 
