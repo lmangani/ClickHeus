@@ -1,9 +1,6 @@
 
 # ClickHouse Metrics for Prometheus
-Sample NodeJS application exposing ClickHouse queries as Prometheus metrics
-
-## What?
-This small tool will execute `clickhouse` queries and publish their results as `prometheus` metrics.
+Sample NodeJS application exposing ClickHouse query results as Prometheus metrics
 
 ### Status
 * Work in progress. Do not use this!
