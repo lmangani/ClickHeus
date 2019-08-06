@@ -1,3 +1,4 @@
+<img src="https://avatars2.githubusercontent.com/u/27866033?s=200&v=4">
 
 # ClickHouse Metrics for Prometheus
 Simple NodeJS application exposing ClickHouse query results as Prometheus metrics
@@ -56,3 +57,9 @@ Connect to the configured `/metrics` endpoint defined in your configuration and 
 # TYPE hepic_click_trans_count gauge
 hepic_click_trans_count{status="FINISHED",xgroup="default",ipgroup_in="default",ipgroup_out="default",usergroup="default",server_type_in="default",server_type_out="default"} 1
 ```
+
+
+---------
+
+## Credits
+This project is sponsored by [QXIP](https://github.com/qxip) and [HEPIC](http://hepic.tel)
