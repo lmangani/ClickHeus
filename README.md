@@ -4,7 +4,7 @@
 Simple NodeJS application exposing ClickHouse query results as Prometheus metrics. It allows linking multiple queries and metric buckets with recurring data intervals and simple mapping of `labels` and `values`.
 
 ##### Status
-* Work in progress. Do not use this!
+* Work in progress, tailored to `HEP` products. Do not use this for anything serious!
 
 -------------
 
