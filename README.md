@@ -24,8 +24,8 @@ Using the `prom_metrics` array, define and name new `bucket` and its definitions
 		{ "name": "g", 
 		  "type": "gauge",
 		  "settings": {
-		        name: 'hepic_click_trans_count',
-		        help: 'hepic transaction Count',
+		        name: 'my_count',
+		        help: 'My Counter',
 		        maxAgeSeconds: 60,
 		        labelNames: [   
 				"status",
@@ -43,8 +43,8 @@ Place your value last in your query, and mark its position using the `counter_po
 ```
 "queries":[
 		{
-			"name": "call_status",
-			"query": "SELECT status, group, count(*) FROM sip_transaction_call FINAL PREWHERE (created_at >= toDateTime(now()-60)) AND (created_at < toDateTime(now()) ) group by status, group",
+			"name": "some_status",
+			"query": "SELECT status, group, count(*) FROM some_index FINAL PREWHERE (created_at >= toDateTime(now()-60)) AND (created_at < toDateTime(now()) ) group by status, group",
 			"counter_position": 2,
 			"refresh": 60000,
 			"metrics": ["g"]
@@ -55,9 +55,9 @@ Place your value last in your query, and mark its position using the `counter_po
 ###### 3: Output Metrics
 Connect to the configured `/metrics` HTTP endpoint defined in your configuration and await data
 ```
-# HELP hepic_click_trans_count hepic transaction Count
-# TYPE hepic_click_trans_count gauge
-hepic_click_trans_count{status="FINISHED",group="default"} 1
+# HELP my_count My Counter
+# TYPE my_count gauge
+my_count{status="FINISHED",group="default"} 10
 ```
 
 
