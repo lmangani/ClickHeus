@@ -1,6 +1,6 @@
-<img src="https://avatars2.githubusercontent.com/u/27866033?s=200&v=4">
+<img src="https://avatars2.githubusercontent.com/u/27866033?s=200&v=4" width=100>
 
-# ClickHouse Metrics for Prometheus
+#  ClickHouse Metrics Export for Prometheus
 <img src=https://user-images.githubusercontent.com/1423657/62568240-0e389700-b88d-11e9-8e7d-16d84be08ae9.png width=550>
 
 Simple NodeJS application exposing ClickHouse query results as Prometheus metrics. It allows cross linking of multiple `queries` and `metric buckets` with recurring data intervals and simple mapping of `labels` and `values`.
