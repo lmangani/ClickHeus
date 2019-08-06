@@ -9,9 +9,10 @@ Simple NodeJS application exposing ClickHouse query results as Prometheus metric
 ### Example
 The following example illustrates mapping of `clickhouse` query columns to metric labels and values.
 
-Configuring an emitter requires the following steps operating thorugh the included `config.js` file:
+#### Configuration
+Configuring an emitter requires the following steps using the included `config.js` file:
 
-#### 1: Define a Metrics Bucket
+##### 1: Define a Metrics Bucket
 Using the `prom_metrics` array, define and name new `bucket` and its definitions. Type can be `gauge` or `histogram`
 ```
 "prom_metrics": [
@@ -35,7 +36,7 @@ Using the `prom_metrics` array, define and name new `bucket` and its definitions
 	],
 ```
 
-#### 2: Define a Query
+##### 2: Define a Query
 Using the `queries` array, define a new `clickhouse` query to execute and associate it with metrics bucket `g`
 ```
 "queries":[
@@ -50,7 +51,7 @@ Using the `queries` array, define a new `clickhouse` query to execute and associ
 	],
 ```
 
-#### 3: Output Metrics
+##### 3: Output Metrics
 Connect to the configured `/metrics` endpoint defined in your configuration and await data
 ```
 # HELP hepic_click_trans_count hepic transaction Count
