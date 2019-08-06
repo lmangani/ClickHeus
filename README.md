@@ -44,7 +44,7 @@ Place your value last in your query, and mark its position using the `counter_po
 "queries":[
 		{
 			"name": "call_status",
-			"query": "SELECT status, group, count(*) FROM sip_transaction_call FINAL PREWHERE record_datetime BETWEEN toDateTime(now()-60000)  AND toDateTime(now()) AND cdr_stop BETWEEN multiply(toUInt64(toDateTime(NOW()-60)), 1000000) AND toUInt64(toDateTime(NOW())) * 1000000 group by status, group",
+			"query": "SELECT status, group, count(*) FROM sip_transaction_call FINAL PREWHERE (created_at >= toDateTime(now()-60)) AND (created_at < toDateTime(now()) ) group by status, group",
 			"counter_position": 2,
 			"refresh": 60000,
 			"metrics": ["g"]
