@@ -7,10 +7,10 @@ var config = {
 		"host": "127.0.0.1",
 		"port": 8123,
 		"user": "default",
-		"password": "password",
-		"database": "my_database"
+		"password": "",
+		"database": ""
 	},
-	"queries":[],
+	"queries": [],
 	"prom_metrics": [],
 	"refresh": 60000,
 };
