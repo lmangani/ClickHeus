@@ -1,9 +1,9 @@
 /*
- * Peafowl DPI Metrics
- *
+ * Clickhouse Prometheus Exporter
+ * https://github.com/lmangani/clickhouse-metrics-prometheus
+ * (C) QXIP BV 2020
  *
  */
-
 
 var config = require('./config').config;
 if (!config || !config.port || !config.endpoint) process.exit();
