@@ -21,19 +21,21 @@ Configuring an emitter requires the following steps through the included `config
 Using the `prom_metrics` array, define and name new `bucket` and its definitions. Type can be `gauge` or `histogram`
 ```
 "prom_metrics": [
-		{ "name": "g", 
-		  "type": "gauge",
-		  "settings": {
-		        name: 'my_count',
-		        help: 'My Counter',
-		        maxAgeSeconds: 60,
-		        labelNames: [   
-				"status",
-	                        "group"
-		        ]
-		  }
-		},
-	],
+   {
+      "name":"g",
+      "type":"gauge",
+      "settings":{
+         "name":"my_count",
+         "help":"My Counter",
+         "maxAgeSeconds":60,
+         "labelNames":[
+            "status",
+            "group"
+         ]
+      }
+   }
+],
+
 ```
 
 ###### 2: Define a Query
@@ -42,14 +44,16 @@ Using the `queries` array, define a new `clickhouse` query to execute and associ
 Place your value last in your query, and mark its position using the `counter_position` parameter.
 ```
 "queries":[
-		{
-			"name": "some_status",
-			"query": "SELECT status, group, count(*) FROM some_index FINAL PREWHERE (created_at >= toDateTime(now()-60)) AND (created_at < toDateTime(now()) ) group by status, group",
-			"counter_position": 2,
-			"refresh": 60000,
-			"metrics": ["g"]
-		},
-	],
+   {
+      "name":"some_status",
+      "query":"SELECT status, group, count(*) FROM some_index FINAL PREWHERE (created_at >= toDateTime(now()-60)) AND (created_at < toDateTime(now()) ) group by status, group",
+      "counter_position":2,
+      "refresh":60000,
+      "metrics":[
+         "g"
+      ]
+   }
+],
 ```
 
 ###### 3: Output Metrics
