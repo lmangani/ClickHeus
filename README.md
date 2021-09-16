@@ -6,7 +6,7 @@
 
 Simple NodeJS application exposing ClickHouse custom query results as Prometheus metrics.
 
-ClickHeus allows cross linking of multiple `queries` and `metric buckets` with recurring data intervals and simple mapping of `labels` and `values`.
+ClickHeus allows cross linking of multiple recurring `queries` and `metric buckets` using custom `labels` and `values`.
 
 
 -------------
