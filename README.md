@@ -11,15 +11,15 @@ ClickHeus allows cross linking of multiple recurring `queries` and `metric bucke
 
 -------------
 
-#### Example
+### Example
 
-##### Configuration
+#### Configuration
 
 Clickheus acts according to the parameters configured in its `config.js` file.
 
 The following example illustrates mapping of `clickhouse` query columns to metric labels and values.
 
-###### 0: Choose a Clickhouse Datasource
+##### 0: Choose a Clickhouse Datasource
 Let's use the following fictional `my_index` table as our datasource:
 
 |datetime  |status   |group   |
@@ -31,7 +31,7 @@ Let's use the following fictional `my_index` table as our datasource:
 | 1631825847  | FINISHED  | default  |
 | ...         | ...       | ...      |
 
-###### 1: Define a Metrics Bucket
+##### 1: Define a Metrics Bucket
 Using the `prom_metrics` array, define and name new `bucket` and its definitions. 
 - Type can be `gauge` or `histogram`
 - LabelNames should match the target tag columns
@@ -54,7 +54,7 @@ Using the `prom_metrics` array, define and name new `bucket` and its definitions
 
 ```
 
-###### 2: Define a Clickhouse Query
+##### 2: Define a Clickhouse Query
 Using the `queries` array, define a `clickhouse` query to execute and associate it with metrics bucket `g`
 - Place your tags first in the query
 - Place your metric value last, and mark its position using the `counter_position` parameter _(count from 0)_.
@@ -74,7 +74,7 @@ Using the `queries` array, define a `clickhouse` query to execute and associate 
 ],
 ```
 
-###### 3: Output Metrics
+##### 3: Output Metrics
 Connect to the configured `/metrics` HTTP endpoint defined in your configuration and await data
 ```
 # HELP my_count My Counter
