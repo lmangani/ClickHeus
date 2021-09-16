@@ -1,9 +1,12 @@
 <img src="https://avatars2.githubusercontent.com/u/27866033?s=200&v=4" width=100>
 
-#  ClickHeus - ClickHouse Custom Metrics Exporter for Prometheus
-<img src=https://user-images.githubusercontent.com/1423657/62568240-0e389700-b88d-11e9-8e7d-16d84be08ae9.png width=550>
+#  ClickHeus
+#### ClickHouse Custom Metrics Exporter for Prometheus
+<img src=https://user-images.githubusercontent.com/1423657/62568240-0e389700-b88d-11e9-8e7d-16d84be08ae9.png width=400>
 
-Simple NodeJS application exposing ClickHouse custom query results as Prometheus metrics. It allows cross linking of multiple `queries` and `metric buckets` with recurring data intervals and simple mapping of `labels` and `values`.
+Simple NodeJS application exposing ClickHouse custom query results as Prometheus metrics.
+
+ClickHeus allows cross linking of multiple `queries` and `metric buckets` with recurring data intervals and simple mapping of `labels` and `values`.
 
 
 -------------
@@ -11,12 +14,27 @@ Simple NodeJS application exposing ClickHouse custom query results as Prometheus
 #### Example
 
 ##### Configuration
+
+Clickheus acts according to the parameters configured in its `config.js` file.
+
 The following example illustrates mapping of `clickhouse` query columns to metric labels and values.
 
-Configuring an emitter requires the following steps through the included `config.js` file:
+###### 0: Choose a Clickhouse Datasource
+Let's use the following fictional `my_index` table as our datasource:
+
+|datetime  |status   |group   |
+|---|---|---|
+| 1631825843  | FINISHED  | default  |
+| 1631825844  | FAILED    | default  |
+| 1631825845  | FINISHED  | default  |
+| 1631825846  | FAILED    | custom   |
+| 1631825847  | FINISHED  | default  |
+| ...         | ...       | ...      |
 
 ###### 1: Define a Metrics Bucket
-Using the `prom_metrics` array, define and name new `bucket` and its definitions. Type can be `gauge` or `histogram`
+Using the `prom_metrics` array, define and name new `bucket` and its definitions. 
+- Type can be `gauge` or `histogram`
+- LabelNames should match the target tag columns
 ```
 "prom_metrics": [
    {
@@ -36,15 +54,17 @@ Using the `prom_metrics` array, define and name new `bucket` and its definitions
 
 ```
 
-###### 2: Define a Query
-Using the `queries` array, define a new `clickhouse` query to execute and associate it with metrics bucket `g`
-
-Place your value last in your query, and mark its position using the `counter_position` parameter.
+###### 2: Define a Clickhouse Query
+Using the `queries` array, define a `clickhouse` query to execute and associate it with metrics bucket `g`
+- Place your tags first in the query
+- Place your metric value last, and mark its position using the `counter_position` parameter _(count from 0)_.
+- Match the refresh rate in milliseconds to match the query range _(ie: 60 seconds)_
+- 
 ```
 "queries":[
    {
-      "name":"some_status",
-      "query":"SELECT status, group, count(*) FROM some_index FINAL PREWHERE (created_at >= toDateTime(now()-60)) AND (created_at < toDateTime(now()) ) group by status, group",
+      "name":"my_status",
+      "query":"SELECT status, group, count(*) FROM my_index FINAL PREWHERE (datetime >= toDateTime(now()-60)) AND (datetime < toDateTime(now()) ) group by status, group",
       "counter_position":2,
       "refresh":60000,
       "metrics":[
