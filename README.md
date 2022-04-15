@@ -1,3 +1,5 @@
+⚠️ Active development has moved to [promcasa](https://github.com/metrico/promcasa)
+
 #   :clock2: *Click-Heus*
 
 #### ClickHouse Custom Metrics Exporter for Prometheus
